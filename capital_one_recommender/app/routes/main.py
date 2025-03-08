@@ -8,10 +8,6 @@ app = Flask(__name__, static_folder="../static", template_folder="../templates")
 def home():
     return render_template('index.html')
 
-@app.route('/questionnaire')
-def questionnaire():
-    return render_template('questionnaire.html')
-
 @app.route('/results')
 def results():
     return render_template('results.html')
@@ -28,9 +24,6 @@ def education():
 def accessibility():
     return render_template('accessibility.html')
 
-@app.route('/features')
-def features():
-    return render_template('features.html')
 
 @app.route('/feedback')
 def feedback():

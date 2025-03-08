@@ -32,13 +32,10 @@
     <nav>
         <ul id="nav-menu">
           <li><a href="{{ url_for('home') }}">Home</a></li>
-          <li><a href="{{ url_for('questionnaire') }}">Questionnaire</a></li>
           <li><a href="{{ url_for('results') }}">Results</a></li>
-          <li><a href="{{ url_for('comparison') }}">Comparison</a></li>
+          <li><a href="{{ url_for('comparison') }}">All Cards</a></li>
           <li><a href="{{ url_for('education') }}">Education</a></li>
           <li><a href="{{ url_for('accessibility') }}">Accessibility</a></li>
-          <li><a href="{{ url_for('features') }}">Features</a></li>
-          <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
         </ul>
       </nav>
       
@@ -55,6 +52,47 @@
     </div>
   </section>
 
+  <!-- Features Section -->
+ <section class="features">
+    <div class="container">
+      <h2 class="text-center">Why use our Card Finder?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" fill="#0076C0"/>
+              <path d="M12 13C9.33 13 4 14.34 4 17V20H20V17C20 14.34 14.67 13 12 13Z" fill="#0076C0"/>
+            </svg>
+          </div>
+          <h3>Personalized Recommendations</h3>
+          <p>Get card suggestions tailored to your unique spending patterns and financial goals.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20Z" fill="#0076C0"/>
+              <path d="M11 8H13V16H11V8Z" fill="white"/>
+              <path d="M15 8H17V16H15V8Z" fill="white"/>
+              <path d="M7 8H9V16H7V8Z" fill="white"/>
+            </svg>
+          </div>
+          <h3>Financial Education Tools</h3>
+          <p>Learn about credit card terms, improve your financial literacy, and make smarter decisions.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" fill="#0076C0"/>
+              <path d="M12 17C14.7614 17 17 14.7614 17 12C17 9.23858 14.7614 7 12 7C9.23858 7 7 9.23858 7 12C7 14.7614 9.23858 17 12 17Z" fill="#0076C0"/>
+            </svg>
+          </div>
+          <h3>Accessibility Features</h3>
+          <p>Designed for everyone with customizable text size, screen reader support, and high contrast options.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Questionnaire Section -->
   <section class="questionnaire" id="questionnaire">
     <div class="container">
@@ -65,39 +103,45 @@
         <div class="form-section">
           <form id="card-finder-form">
             <div class="form-group">
-              <label for="spending-categories">What are your top spending categories?</label>
-              <select id="spending-categories" multiple>
-                <option value="travel">Travel</option>
-                <option value="dining">Dining & Restaurants</option>
-                <option value="groceries">Groceries</option>
-                <option value="gas">Gas & Automotive</option>
-                <option value="shopping">Shopping</option>
-                <option value="entertainment">Entertainment</option>
-                <option value="utilities">Bills & Utilities</option>
-              </select>
+                <label>What are your top spending categories?</label>
+                <div class="checkbox-group">
+                  <label><input type="checkbox" name="spending_categories" value="travel"> Travel</label>
+                  <label><input type="checkbox" name="spending_categories" value="dining"> Dining & Restaurants</label>
+                  <label><input type="checkbox" name="spending_categories" value="groceries"> Groceries</label>
+                  <label><input type="checkbox" name="spending_categories" value="gas"> Gas & Automotive</label>
+                  <label><input type="checkbox" name="spending_categories" value="shopping"> Shopping</label>
+                  <label><input type="checkbox" name="spending_categories" value="entertainment"> Entertainment</label>
+                  <label><input type="checkbox" name="spending_categories" value="utilities"> Bills & Utilities</label>
+                </div>
+              </div>
+              
+            
+              <div class="form-group">
+                <label for="income-range">Approximate Annual Income</label>
+                <div class="slider-container">
+                    <input type="range" id="income-range" min="0" max="5" step="1" value="2" oninput="updateSlider('income-range', 'income-value')">
+                    <span class="slider-value" id="income-value">$50k</span> <!-- Floats above thumb -->
+                    <div class="slider-labels">
+                        <span>$0</span>
+                        <span>$100k+</span>
+                    </div>
+                </div>
             </div>
             
             <div class="form-group">
-              <label for="income-range">Approximate Annual Income</label>
-              <div class="slider-container">
-                <input type="range" id="income-range" min="0" max="5" step="1" value="2">
-                <div class="slider-labels">
-                  <span>Below $30k</span>
-                  <span>$100k+</span>
+                <label for="credit-score">Estimated Credit Score</label>
+                <div class="slider-container">
+                    <input type="range" id="credit-score" min="0" max="4" step="1" value="2" oninput="updateSlider('credit-score', 'credit-value')">
+                    <span class="slider-value" id="credit-value">Good</span> <!-- Floats above thumb -->
+                    <div class="slider-labels">
+                        <span>Poor</span>
+                        <span>Excellent</span>
+                    </div>
                 </div>
-              </div>
             </div>
             
-            <div class="form-group">
-              <label for="credit-score">Estimated Credit Score</label>
-              <div class="slider-container">
-                <input type="range" id="credit-score" min="0" max="4" step="1" value="2">
-                <div class="slider-labels">
-                  <span>Poor</span>
-                  <span>Excellent</span>
-                </div>
-              </div>
-            </div>
+            
+              
             
             <div class="form-group">
               <label>Preferences</label>
@@ -127,29 +171,22 @@
             </div>
             
             <div class="progress-container">
-              <label>Questionnaire Progress</label>
-              <div class="progress-bar">
-                <div class="progress-fill"></div>
-              </div>
-            </div>
+                <label>Questionnaire Progress</label>
+                <div class="progress-bar">
+                  <div class="progress-fill" id="progress-fill"></div>
+                </div>
             
-            <button type="submit" class="btn btn-accent">Show My Card Recommendations</button>
+            </div>
+            <center><button type="submit" class="btn btn-accent" formaction="{{ url_for('results') }}">Show My Card Recommendations</button></center>
+
           </form>
         </div>
-        
-        <div class="result-preview">
-          <h3>Estimated Results</h3>
-          <p>Based on your selections so far, you might be interested in:</p>
-          <ul>
-            <li>Cards with cashback on grocery purchases</li>
-            <li>Low APR options</li>
-            <li>No annual fee cards</li>
-          </ul>
-          <p class="text-sm">Continue filling out the form for your personalized recommendations.</p>
-        </div>
+    
       </div>
     </div>
   </section>
+
+  <script src="{{ url_for('static', filename='js/accessibility.js') }}"></script> 
 
 
 </body>
