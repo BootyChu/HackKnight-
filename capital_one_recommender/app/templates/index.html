@@ -145,18 +145,32 @@
               </div>
           </div>
 
-            <div class="form-group">
-              <label>Preferences</label>
-              <div>
-                <label><input type="checkbox" name="pay_balance_in_full"> I pay my balance in full each month</label>
-              </div>
-              <div>
-                <label><input type="checkbox" name="no_foreign_fees"> I want a card with no foreign transaction fees</label>
-              </div>
-              <div>
-                <label><input type="checkbox" name="prefer_cashback"> I prefer cashback over travel rewards</label>
-              </div>
+          <div class="form-group">
+            <label>Preferences</label>
+            <div class="toggle-group">
+              <label class="toggle">
+                <input type="checkbox" id="full-balance">
+                <span class="toggle-slider"></span>
+              </label>
+              <span>I pay my balance in full each month</span>
             </div>
+            
+            <div class="toggle-group">
+              <label class="toggle">
+                <input type="checkbox" id="no-foreign-fees">
+                <span class="toggle-slider"></span>
+              </label>
+              <span>I want a card with no foreign transaction fees</span>
+            </div>
+            
+            <div class="toggle-group">
+              <label class="toggle">
+                <input type="checkbox" id="prefer-cashback">
+                <span class="toggle-slider"></span>
+              </label>
+              <span>I prefer cashback over travel rewards</span>
+            </div>
+          </div>
 
             <div class="progress-container">
               <label>Questionnaire Progress</label>
