@@ -1,17 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capital One Card Finder | Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h2>Login</h2>
-    <form method="POST">
-        <input type="text" name="user_input" placeholder="Username or Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Log In</button>
-    </form>
 
-    <p>Don't have an account? <a href="{{ url_for('auth.register') }}">Sign up</a></p>
+    <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <!-- Logo -->
+      <a href="{{ url_for('home') }}" class="logo">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4Z" fill="#0076C0"/>
+          <path d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z" fill="white"/>
+        </svg>
+        Capital One Card Finder
+      </a>
+      
+  
+      <!-- Buttons (Sign In & Help Support) -->
+      <div class="accessibility-controls">
+        <button class="btn btn-secondary">Help & Support</button>
+
+      </div>
+    </div>
+      
+      
+  </header>
+
+
+    <!-- Login Form -->
+    <section class="auth-section">
+        <div class="container">
+        <div class="auth-container">
+            <div class="auth-image">
+            <h2>Discover Your Perfect Card</h2>
+            <p>Join Capital One Card Finder and unlock personalized recommendations</p>
+            <div class="feature-list">
+                <div class="feature-item">
+                <div class="feature-icon-small">✓</div>
+                <span>Personalized card suggestions based on your spending habits</span>
+                </div>
+                <div class="feature-item">
+                <div class="feature-icon-small">✓</div>
+                <span>Compare features across multiple Capital One cards</span>
+                </div>
+                <div class="feature-item">
+                <div class="feature-icon-small">✓</div>
+                <span>Track your application status in one place</span>
+                </div>
+            </div>
+            </div>
+            <div class="auth-forms">
+            <div class="form-tabs">
+                <div class="form-tab active" id="login-tab">Log In</div>
+                <div class="form-tab" id="signup-tab">Sign Up</div>
+            </div>
+            
+            <div class="form-content active" id="login-form">
+                <h2>Welcome Back</h2>
+                <p>Sign in to your Capital One Card Finder account</p>
+                
+                <form>
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                
+                <div class="checkbox-groups">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me for 30 days</label>
+                </div>
+                
+                <button type="submit" class="btn btn-accent" style="width: 100%;">Log In</button>
+                </form>
+                
+                <div class="social-login">
+                <p>Or continue with</p>
+                <div class="social-buttons">
+                    <div class="social-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22.5 12.0645C22.5 6.26826 17.7984 1.56451 12 1.56451C6.20156 1.56451 1.5 6.26826 1.5 12.0645C1.5 17.3059 5.33906 21.649 10.3594 22.4355V15.1872H7.69266V12.0645H10.3594V9.74349C10.3594 7.12051 11.9273 5.66916 14.3255 5.66916C15.4744 5.66916 16.6763 5.86693 16.6763 5.86693V8.45574H15.3516C14.048 8.45574 13.6406 9.26339 13.6406 10.0926V12.0645H16.5469L16.0879 15.1872H13.6406V22.4355C18.6609 21.649 22.5 17.3059 22.5 12.0645Z" fill="#1877F2"/>
+                    </svg>
+                    </div>
+                    <div class="social-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21.8055 10.0415H21V10H12V14H17.6515C16.827 16.3285 14.6115 18 12 18C8.6865 18 6 15.3135 6 12C6 8.6865 8.6865 6 12 6C13.5295 6 14.921 6.577 15.9805 7.5195L18.809 4.691C17.023 3.0265 14.634 2 12 2C6.4775 2 2 6.4775 2 12C2 17.5225 6.4775 22 12 22C17.5225 22 22 17.5225 22 12C22 11.3295 21.931 10.675 21.8055 10.0415Z" fill="#FFC107"/>
+                        <path d="M3.15302 7.3455L6.43851 9.755C7.32752 7.554 9.48052 6 12 6C13.5295 6 14.921 6.577 15.9805 7.5195L18.809 4.691C17.023 3.0265 14.634 2 12 2C8.15902 2 4.82802 4.1685 3.15302 7.3455Z" fill="#FF3D00"/>
+                        <path d="M12 22C14.583 22 16.93 21.0115 18.7045 19.404L15.6095 16.785C14.5718 17.5742 13.3038 18.001 12 18C9.39903 18 7.19053 16.3415 6.35853 14.027L3.09753 16.5395C4.75253 19.778 8.11353 22 12 22Z" fill="#4CAF50"/>
+                        <path d="M21.8055 10.0415H21V10H12V14H17.6515C17.2571 15.1082 16.5467 16.0766 15.608 16.7855L15.6095 16.7845L18.7045 19.4035C18.4855 19.6025 22 17 22 12C22 11.3295 21.931 10.675 21.8055 10.0415Z" fill="#1976D2"/>
+                    </svg>
+                    </div>
+                    <div class="social-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.5828 12.0051C17.5854 11.1811 17.8089 10.3724 18.2379 9.65333C18.6669 8.93429 19.2892 8.32903 20.0343 7.89762C19.5447 7.17428 18.8809 6.57833 18.1007 6.1635C17.3205 5.74867 16.4466 5.53063 15.5574 5.5299C13.6022 5.33571 11.7131 6.68665 10.7169 6.68665C9.70051 6.68665 8.17358 5.55075 6.55657 5.58303C5.46957 5.61609 4.41595 5.93655 3.5137 6.50947C2.61144 7.08239 1.89727 7.88191 1.45108 8.82111C-0.57142 12.7839 0.932255 18.575 2.87628 21.6964C3.84573 23.226 4.99538 24.934 6.54306 24.8704C8.04121 24.8012 8.62196 23.9277 10.4328 23.9277C12.2222 23.9277 12.7658 24.8704 14.3409 24.8288C15.9637 24.8012 16.9553 23.2852 17.8825 21.7393C18.5585 20.6493 19.0648 19.4644 19.3862 18.2253C18.4673 17.7996 17.6935 17.1284 17.1554 16.2979C16.6172 15.4674 16.3336 14.5128 16.3362 13.539L17.5828 12.0051Z" fill="black"/>
+                        <path d="M14.8202 3.62195C15.6438 2.61506 16.0022 1.3271 15.8204 0.0517578C14.5322 0.16131 13.3318 0.746025 12.458 1.6883C12.036 2.14354 11.7066 2.67392 11.4905 3.24948C11.2744 3.82504 11.1754 4.43478 11.1989 5.0452C11.8198 5.05384 12.4324 4.91347 12.9932 4.6348C13.554 4.35614 14.0483 3.94605 14.4392 3.4378L14.8202 3.62195Z" fill="black"/>
+                    </svg>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="terms">
+                By continuing, you agree to Capital One's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+
+  <script src="{{ url_for('static', filename='js/accessibility.js') }}"></script> 
+
 </body>
 </html>

@@ -58,3 +58,35 @@ document.addEventListener("DOMContentLoaded", function () {
     // Call function once on page load to check pre-filled values
     updateProgress();
 });
+
+
+// login page
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("signup-tab")?.addEventListener("click", function () {
+        // Redirect to the register page when "Sign Up" tab is clicked
+        window.location.href = "/register";
+    });
+
+    document.getElementById("login-tab")?.addEventListener("click", function () {
+        // Redirect to the login page when "Log In" tab is clicked
+        window.location.href = "/login";
+    });
+});
+
+
+// Tab switching (for visual effect)
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('login-tab')?.addEventListener('click', function() {
+        document.getElementById('login-tab').classList.add('active');
+        document.getElementById('signup-tab').classList.remove('active');
+        document.getElementById('login-form').classList.add('active');
+        document.getElementById('signup-form').classList.remove('active');
+    });
+
+    document.getElementById('signup-tab')?.addEventListener('click', function() {
+        document.getElementById('signup-tab').classList.add('active');
+        document.getElementById('login-tab').classList.remove('active');
+        document.getElementById('signup-form').classList.add('active');
+        document.getElementById('login-form').classList.remove('active');
+    });
+});

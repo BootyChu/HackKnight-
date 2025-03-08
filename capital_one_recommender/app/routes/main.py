@@ -3,6 +3,7 @@ from app.utils.models import db
 from app.utils.database import init_db
 from app.routes.auth import auth
 
+
 app = Flask(__name__, static_folder="../static", template_folder="../templates")
 
 init_db(app) 
@@ -31,14 +32,13 @@ def education():
 def accessibility():
     return render_template('accessibility.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
-@app.route('/feedback')
-def feedback():
-    return render_template('feedback.html')
-
-@app.route('/dashboard')
-def dashboard():
-    return render_template('dashboard.html')
+@app.route('/register')
+def register():
+    return render_template('register.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
