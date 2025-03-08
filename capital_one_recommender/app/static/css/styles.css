@@ -1034,3 +1034,72 @@ footer {
   accent-color: var(--primary);
   margin-right: 5px;
 }
+
+
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for Cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Card Styling */
+.card-recommendation {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card-recommendation:hover {
+  transform: translateY(-5px);
+}
+
+/* Card Image Placeholder */
+.card-image {
+  background-color: #0076C0;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Card Content */
+.card-content {
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Features List */
+.card-features {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.feature-icon-small {
+  color: green;
+  font-weight: bold;
+}

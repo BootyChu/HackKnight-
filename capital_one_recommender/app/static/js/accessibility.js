@@ -74,6 +74,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
+
 // Tab switching (for visual effect)
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('login-tab')?.addEventListener('click', function() {
@@ -89,4 +92,80 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('signup-form').classList.add('active');
         document.getElementById('login-form').classList.remove('active');
     });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("static/data/cards.csv")
+        .then(response => response.text())
+        .then(csvText => {
+            const cardsArray = parseCSV(csvText);
+            renderCards(cardsArray);
+        })
+        .catch(error => console.error("Error loading CSV file:", error));
+
+    function parseCSV(csvText) {
+        csvText = csvText.replace(/\r\n/g, "\n").trim();
+        const lines = csvText.split("\n");
+        const headers = lines[0].split(",").map(h => h.trim());
+
+        return lines.slice(1).map(line => {
+            let values = [];
+            let current = "";
+            let insideQuotes = false;
+
+            for (let char of line) {
+                if (char === '"' && !insideQuotes) {
+                    insideQuotes = true;
+                } else if (char === '"' && insideQuotes) {
+                    insideQuotes = false;
+                } else if (char === "," && !insideQuotes) {
+                    values.push(current.trim());
+                    current = "";
+                } else {
+                    current += char;
+                }
+            }
+            values.push(current.trim());
+
+            if (values.length !== headers.length) {
+                return null;
+            }
+
+            return headers.reduce((acc, header, index) => {
+                acc[header.replace(/\s+/g, " ").trim()] = values[index] || "N/A";
+                return acc;
+            }, {});
+        }).filter(card => card !== null);
+    }
+
+    function renderCards(cards) {
+        const container = document.getElementById("card-container");
+        if (!container) return;
+
+        container.innerHTML = "";
+
+        if (cards.length === 0) {
+            container.innerHTML = "<p>No cards available.</p>";
+            return;
+        }
+
+        cards.forEach(card => {
+            const cardHTML = `
+                <div class="card-recommendation">
+                    <div class="card-image">${card["Card Name"] || "Unknown Card"}</div>
+                    <div class="card-content">
+                        <span class="card-tag">${card["Credit Level"] || "N/A"}</span>
+                        <h3 class="card-title">${card["Card Name"] || "Unknown"}</h3>
+                        <div class="card-features">
+                            <div class="feature-item"><span class="feature-icon-small">✓</span> ${card["Reward"] || "No rewards info"}</div>
+                            <div class="feature-item"><span class="feature-icon-small">✓</span> Annual Fee: ${card["Annual Fee"] || "Not specified"}</div>
+                            <div class="feature-item"><span class="feature-icon-small">✓</span> Purchase Rate: ${card["Purchase Rate"] || "N/A"}</div>
+                            <div class="feature-item"><span class="feature-icon-small">✓</span> Transfer Info: ${card["Transfer Info"] || "N/A"}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.innerHTML += cardHTML;
+        });
+    }
 });
