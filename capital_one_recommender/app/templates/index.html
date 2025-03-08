@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link rel="stylesheet" href="app/static/css/styles.css">
+
+
+  <!-- <title>Capital One Card Finder | Find Your Perfect Match</title> -->
+
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <!-- Logo -->
+      <div class="logo">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4Z" fill="#0076C0"/>
+          <path d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z" fill="white"/>
+        </svg>
+        Capital One Card Finder
+      </div>
+  
+      <!-- Buttons (Sign In & Help Support) -->
+      <div class="accessibility-controls">
+        <button class="btn btn-secondary">Help & Support</button>
+        <button class="btn">Sign In</button>
+      </div>
+    </div>
+  
+    <!-- Navigation Bar Below -->
+    <nav>
+        <ul id="nav-menu">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('questionnaire') }}">Questionnaire</a></li>
+          <li><a href="{{ url_for('results') }}">Results</a></li>
+          <li><a href="{{ url_for('comparison') }}">Comparison</a></li>
+          <li><a href="{{ url_for('education') }}">Education</a></li>
+          <li><a href="{{ url_for('accessibility') }}">Accessibility</a></li>
+          <li><a href="{{ url_for('features') }}">Features</a></li>
+          <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+        </ul>
+      </nav>
+      
+      
+  </header>
+  
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Find the Best Capital One Credit Card for You</h1>
+      <p>Get personalized credit card recommendations based on your spending habits, financial goals, and preferences.</p>
+      <a href="#questionnaire" class="btn btn-accent">Find My Card</a>
+    </div>
+  </section>
+
+  <!-- Questionnaire Section -->
+  <section class="questionnaire" id="questionnaire">
+    <div class="container">
+      <h2 class="text-center">Tell Us About Your Needs</h2>
+      <p class="text-center">Answer a few questions to get your personalized card recommendations</p>
+      
+      <div class="questionnaire-container">
+        <div class="form-section">
+          <form id="card-finder-form">
+            <div class="form-group">
+              <label for="spending-categories">What are your top spending categories?</label>
+              <select id="spending-categories" multiple>
+                <option value="travel">Travel</option>
+                <option value="dining">Dining & Restaurants</option>
+                <option value="groceries">Groceries</option>
+                <option value="gas">Gas & Automotive</option>
+                <option value="shopping">Shopping</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="utilities">Bills & Utilities</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="income-range">Approximate Annual Income</label>
+              <div class="slider-container">
+                <input type="range" id="income-range" min="0" max="5" step="1" value="2">
+                <div class="slider-labels">
+                  <span>Below $30k</span>
+                  <span>$100k+</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="credit-score">Estimated Credit Score</label>
+              <div class="slider-container">
+                <input type="range" id="credit-score" min="0" max="4" step="1" value="2">
+                <div class="slider-labels">
+                  <span>Poor</span>
+                  <span>Excellent</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>Preferences</label>
+              <div class="toggle-group">
+                <label class="toggle">
+                  <input type="checkbox" id="full-balance">
+                  <span class="toggle-slider"></span>
+                </label>
+                <span>I pay my balance in full each month</span>
+              </div>
+              
+              <div class="toggle-group">
+                <label class="toggle">
+                  <input type="checkbox" id="no-foreign-fees">
+                  <span class="toggle-slider"></span>
+                </label>
+                <span>I want a card with no foreign transaction fees</span>
+              </div>
+              
+              <div class="toggle-group">
+                <label class="toggle">
+                  <input type="checkbox" id="prefer-cashback">
+                  <span class="toggle-slider"></span>
+                </label>
+                <span>I prefer cashback over travel rewards</span>
+              </div>
+            </div>
+            
+            <div class="progress-container">
+              <label>Questionnaire Progress</label>
+              <div class="progress-bar">
+                <div class="progress-fill"></div>
+              </div>
+            </div>
+            
+            <button type="submit" class="btn btn-accent">Show My Card Recommendations</button>
+          </form>
+        </div>
+        
+        <div class="result-preview">
+          <h3>Estimated Results</h3>
+          <p>Based on your selections so far, you might be interested in:</p>
+          <ul>
+            <li>Cards with cashback on grocery purchases</li>
+            <li>Low APR options</li>
+            <li>No annual fee cards</li>
+          </ul>
+          <p class="text-sm">Continue filling out the form for your personalized recommendations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</body>
+</html>

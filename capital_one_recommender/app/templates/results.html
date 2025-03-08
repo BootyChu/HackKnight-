@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link rel="stylesheet" href="app/static/css/styles.css">
+
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <!-- Logo -->
+      <div class="logo">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4Z" fill="#0076C0"/>
+          <path d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z" fill="white"/>
+        </svg>
+        Capital One Card Finder
+      </div>
+  
+      <!-- Buttons (Sign In & Help Support) -->
+      <div class="accessibility-controls">
+        <button class="btn btn-secondary">Help & Support</button>
+        <button class="btn">Sign In</button>
+      </div>
+    </div>
+  
+    <!-- Navigation Bar Below -->
+    <nav>
+        <ul id="nav-menu">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('questionnaire') }}">Questionnaire</a></li>
+          <li><a href="{{ url_for('results') }}">Results</a></li>
+          <li><a href="{{ url_for('comparison') }}">Comparison</a></li>
+          <li><a href="{{ url_for('education') }}">Education</a></li>
+          <li><a href="{{ url_for('accessibility') }}">Accessibility</a></li>
+          <li><a href="{{ url_for('features') }}">Features</a></li>
+          <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+        </ul>
+      </nav>
+      
+      
+  </header>
+
+ <!-- Card Results -->
+ <section class="card-results">
+    <div class="container">
+      <h2 class="text-center">Your Recommended Cards</h2>
+      <p class="text-center">Based on your preferences, we've found these Capital One cards for you</p>
+      
+      <div class="card-grid">
+        <div class="card-recommendation">
+          <div class="card-image">
+            Capital One Quicksilver
+          </div>
+          <div class="card-content">
+            <span class="card-tag">Best Overall Match</span>
+            <h3 class="card-title">Quicksilver Cash Rewards</h3>
+            <div class="card-features">
+              <div class="feature-item">
+                <span class="feature-icon-small">✓</span>
+                <span>Unlimited 1.5% cash back on every purchase</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon-small">✓</span>
+                <span>$0 annual fee</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon-small">✓</span>
+                <span>No foreign transaction fees</span>
+              </div>
+            </div>
+            
+            <div class="reason-matched">
+              <h4>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="#0076C0"/>
+                </svg>
+                Why this matches you
+              </h4>
+              <p>Based on your spending habits across multiple categories and preference for cashback rewards.</p>
+            </div>
+            
+            <a href="#" class="btn">Learn More</a>
+            <a href="#" class="btn btn-accent">Apply Now</a>
+          </div>
+        </div>
+        
+        <div class="card-recommendation">
+          <div class="card-image">
+            Capital One SavorOne
+          </div>
+          <div class="card-content">
+            <span class="card-tag">Great for Dining</span>
+            <h3 class="card-title">SavorOne Cash Rewards</h3>
+            <div class="card-features">
+              <div class="feature-item">
+                <span class="feature-icon-small">✓</span>
+                <span>3% cash back on dining, entertainment</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon-small">✓</span>
+                <span>3% cash back at grocery stores</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon-small">✓</span>
+                <span>1% cash back on all other purchases</span>
+              </div>
+            </div>
+            
+            <div class="reason-matched">
+              <h4>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="#0076C0"/>
+                </svg>
+                Why this matches you
+              </h4>
+              <p>You indicated dining and groceries as top spending categories, making this card's rewards structure ideal.</p>
+            </div>
+            
+            <a href="#" class="btn">Learn More</a>
+            <a href="#" class="btn btn-accent">Apply Now</a>
+          </div>
+        </div>
+        
+        <div class="card-recommendation">
+          <div class="card-image">
+            Capital One Venture
+          </div>
+          <div class="card-content">
+            <span class="card-tag">Best for Travel</span>
+            <h3 class="card-title">Venture Rewards</h3>
+            <div class="card-features">
+              <div class="feature-item">
+                <span class="feature-icon-small">✓</span>
+                <span>2x miles on every purchase</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon-small">✓</span>
+                <span>No foreign transaction fees</span>
+              </div>
+              <div class="feature-item">
+
+</body>
+</html>
