@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capital One Card Finder | Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <!-- Logo -->
+      <a href="{{ url_for('main.home') }}" class="logo">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4Z" fill="#0076C0"/>
+          <path d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z" fill="white"/>
+        </svg>
+        Capital One Card Finder
+      </a>
+      
+  
+      <!-- Buttons (Sign In & Help Support) -->
+      <div class="accessibility-controls">
+        <button class="btn btn-secondary">Help & Support</button>
+
+      </div>
+    </div>
+
+  </header>
+
+  <!-- Questionnaire Section -->
+  <section class="questionnaire" id="questionnaire">
+    <div class="container">
+      <h2 class="text-center">Tell Us About Your Needs</h2>
+      <p class="text-center">Answer a few questions to get your personalized card recommendations</p>
+      
+      <div class="questionnaire-container">
+        <div class="form-section">
+          <form id="card-finder-form">
+            <div class="form-group">
+                <label>What are your top spending categories?</label>
+                <div class="checkbox-group">
+                  <label><input type="checkbox" name="spending_categories" value="travel"> Travel</label>
+                  <label><input type="checkbox" name="spending_categories" value="dining"> Dining & Restaurants</label>
+                  <label><input type="checkbox" name="spending_categories" value="groceries"> Groceries</label>
+                  <label><input type="checkbox" name="spending_categories" value="gas"> Gas & Automotive</label>
+                  <label><input type="checkbox" name="spending_categories" value="shopping"> Shopping</label>
+                  <label><input type="checkbox" name="spending_categories" value="entertainment"> Entertainment</label>
+                  <label><input type="checkbox" name="spending_categories" value="utilities"> Bills & Utilities</label>
+                </div>
+              </div>
+              
+            
+              <div class="form-group">
+                <label for="income-range">Approximate Annual Income</label>
+                <div class="slider-container">
+                  <center><span class="slider-value" id="income-value">$50k</span></center> <!-- Floats above thumb -->
+                    <input type="range" id="income-range" min="0" max="5" step="1" value="2" oninput="updateSlider('income-range', 'income-value')">
+                    
+                    <div class="slider-labels">
+                        <span>$0</span>
+                        <span>$100k+</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="credit-score">Estimated Credit Score</label>
+                <div class="slider-container">
+                    <center><span class="slider-value" id="credit-value">Good</span></center><!-- Floats above thumb -->
+                    <input type="range" id="credit-score" min="0" max="4" step="1" value="2" oninput="updateSlider('credit-score', 'credit-value')">
+                    <div class="slider-labels">
+                        <span>Poor</span>
+                        <span>Excellent</span>
+                    </div>
+                </div>
+            </div>
+            
+            
+              
+            
+            <div class="form-group">
+              <label>Preferences</label>
+              <div class="toggle-group">
+                <label class="toggle">
+                  <input type="checkbox" id="full-balance">
+                  <span class="toggle-slider"></span>
+                </label>
+                <span>I pay my balance in full each month</span>
+              </div>
+              
+              <div class="toggle-group">
+                <label class="toggle">
+                  <input type="checkbox" id="no-foreign-fees">
+                  <span class="toggle-slider"></span>
+                </label>
+                <span>I want a card with no foreign transaction fees</span>
+              </div>
+              
+              <div class="toggle-group">
+                <label class="toggle">
+                  <input type="checkbox" id="prefer-cashback">
+                  <span class="toggle-slider"></span>
+                </label>
+                <span>I prefer cashback over travel rewards</span>
+              </div>
+            </div>
+            
+            <div class="progress-container">
+                <label>Questionnaire Progress</label>
+                <div class="progress-bar">
+                  <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            
+            </div>
+            <center>
+                <button type="submit" class="btn btn-accent" formaction="{{ url_for('main.congrats') }}">
+                    Sign Up
+                </button>
+            </center>
+            
+
+          </form>
+        </div>
+
+    
+
+    <script src="{{ url_for('static', filename='js/accessibility.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Congratulations!</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+    .centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height */
+  text-align: center;
+  flex-direction: column;
+}
+
+h2 {
+  color: green;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #333;
+}
+  </style>
+</head>
+<body>
+<!-- Header -->
+<header>
+    <div class="container header-container">
+      <!-- Logo -->
+      <a href="{{ url_for('main.home') }}" class="logo">
+
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4Z" fill="#0076C0"/>
+          <path d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z" fill="white"/>
+        </svg>
+        Capital One Card Finder
+      </a>
+      
+  
+      <!-- Buttons (Sign In & Help Support) -->
+      <div class="accessibility-controls">
+        <button class="btn btn-secondary">Help & Support</button>
+        <button class="btn">Sign In</button>
+      </div>
+    </div>
+  
+    <!-- Navigation Bar Below -->
+    <nav>
+        <ul id="nav-menu">
+          <li><a href="{{ url_for('main.home') }}">Home</a></li>
+          <li><a href="{{ url_for('main.results') }}">Results</a></li>
+          <li><a href="{{ url_for('main.comparison') }}">All Cards</a></li>
+          <li><a href="{{ url_for('main.education') }}">Education</a></li>
+          <li><a href="{{ url_for('main.accessibility') }}">Accessibility</a></li>
+
+        </ul>
+      </nav>
+      
+      
+  </header>
+  <div class="centered-container">
+      <h2>🎉 Congratulations! 🎉</h2>
+      <p>We are redirecting you to your personalized card recommendations...</p>
+  </div>
+  <script>
+    // Automatically redirect after 0.7 seconds
+    setTimeout(() => {
+        window.location.href = "{{ url_for('main.results') }}";
+    }, 700);
+</script>
+  <script src="{{ url_for('static', filename='js/accessibility.js') }}"></script> 
+</body>
+</html>

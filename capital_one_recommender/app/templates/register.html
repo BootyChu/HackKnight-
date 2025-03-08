@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,5 +38,101 @@
     </form>
 
     <p>Already have an account? <a href="{{ url_for('auth.login') }}">Log in</a></p>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capital One Card Finder | Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="{{ url_for('main.home') }}" class="logo">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4Z" fill="#0076C0"/>
+                    <path d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z" fill="white"/>
+                </svg>
+                Capital One Card Finder
+            </a>
+        </div>
+    </header>
+
+    <!-- Sign Up Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <!-- Left Image & Info -->
+                <div class="auth-image">
+                    <h2>Discover Your Perfect Card</h2>
+                    <p>Join Capital One Card Finder and unlock personalized recommendations</p>
+                    <div class="feature-list">
+                        <div class="feature-item">✓ Personalized card suggestions based on spending</div>
+                        <div class="feature-item">✓ Compare features across multiple cards</div>
+                        <div class="feature-item">✓ Track your application status in one place</div>
+                    </div>
+                </div>
+
+                <!-- Sign-Up Form -->
+                <div class="auth-forms">
+                    <div class="form-tabs">
+                        <div class="form-tab" id="login-tab"><a href="/login">Log In</a></div>
+                        <div class="form-tab active" id="signup-tab">Sign Up</div>
+                    </div>
+
+                    <div class="form-content active" id="signup-form">
+                        <h2>Create an Account</h2>
+                        <p>Join Capital One Card Finder to get started</p>
+
+                        <!-- ✅ Form that Redirects to Questionnaire -->
+                        <form method="POST" id="signup-form">
+                            <div class="form-group">
+                                <label for="signup-name">Full Name</label>
+                                <input type="text" id="signup-name" name="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signup-email">Email Address</label>
+                                <input type="email" id="signup-email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signup-password">Password</label>
+                                <input type="password" id="signup-password" name="password" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signup-confirm">Confirm Password</label>
+                                <input type="password" id="signup-confirm" name="confirm_password" required>
+                            </div>
+
+                            <div class="checkbox-groups">
+                                <input type="checkbox" id="agree-terms" required>
+                                <label for="agree-terms">I agree to the Terms of Service and Privacy Policy</label>
+                            </div>
+
+                            <!-- ✅ Button Redirects to Questionnaire -->
+                            <button type="button" class="btn btn-accent" style="width: 100%;" onclick="redirectToQuestionnaire()">Next</button>
+                        </form>
+
+                        <!-- ✅ JavaScript to Redirect to Questionnaire -->
+                        <script>
+                            function redirectToQuestionnaire() {
+                                window.location.href = "{{ url_for('main.questionnaire') }}";
+                            }
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

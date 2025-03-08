@@ -68,16 +68,19 @@
   .btn {
     background: var(--primary);
     color: white;
-    border: none;
-    padding: 12px 24px;
+    border: 2px solid var(--primary); /* Match border style */
+    padding: 10px 20px; /* Match btn-secondary padding */
     border-radius: var(--radius);
     font-weight: 600;
+    font-size: 1rem; /* Ensure same font size */
     cursor: pointer;
     transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
+    height: 40px; /* Ensure consistent height */
+    min-width: 120px; /* Ensure consistent width */
   }
   
   .btn:hover {
@@ -1034,3 +1037,5 @@ footer {
   accent-color: var(--primary);
   margin-right: 5px;
 }
+
+

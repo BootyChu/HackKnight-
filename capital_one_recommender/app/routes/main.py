@@ -63,6 +63,7 @@ main = Blueprint('main', __name__)
 def home():
     return render_template('index.html')
 
+
 @main.route('/questionnaire')
 def questionnaire():
     return render_template('questionnaire.html')
@@ -94,3 +95,21 @@ def feedback():
 @main.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
+
+@main.route('/congrats')
+def congrats():
+    return render_template('congrats.html')
+
+
+
+from flask import Flask
+from app.routes.main import main  # Import main blueprint
+from app.routes.auth import auth  # Import auth blueprint
+
+def create_app():
+    app = Flask(__name__)
+    
+    app.register_blueprint(main, url_prefix="/")  # ✅ Register `main` blueprint
+    app.register_blueprint(auth, url_prefix="/auth")  # ✅ Register `auth` blueprint
+
+    return app

@@ -170,3 +170,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+
+//  // Automatically redirect after 0.7 seconds
+//  setTimeout(() => {
+//     window.location.href = "{{ url_for('main.results') }}";
+// }, 700);
