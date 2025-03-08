@@ -15,6 +15,7 @@ function updateSlider(sliderId, displayId) {
 }
 
 
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form"); // Select the form
     const progressBar = document.getElementById("progress-fill"); // Progress bar fill
