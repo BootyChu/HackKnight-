@@ -106,85 +106,66 @@
       
       <div class="questionnaire-container">
         <div class="form-section">
-          <form id="card-finder-form">
+          <form id="card-finder-form" method="POST" action="{{ url_for('main.submit_questionnaire') }}">
             <div class="form-group">
-                <label>What are your top spending categories?</label>
-                <div class="checkbox-group">
-                  <label><input type="checkbox" name="spending_categories" value="travel"> Travel</label>
-                  <label><input type="checkbox" name="spending_categories" value="dining"> Dining & Restaurants</label>
-                  <label><input type="checkbox" name="spending_categories" value="groceries"> Groceries</label>
-                  <label><input type="checkbox" name="spending_categories" value="gas"> Gas & Automotive</label>
-                  <label><input type="checkbox" name="spending_categories" value="shopping"> Shopping</label>
-                  <label><input type="checkbox" name="spending_categories" value="entertainment"> Entertainment</label>
-                  <label><input type="checkbox" name="spending_categories" value="utilities"> Bills & Utilities</label>
-                </div>
+              <label>What are your top spending categories?</label>
+              <div class="checkbox-group">
+                <label><input type="checkbox" name="travel"> Travel</label>
+                <label><input type="checkbox" name="dining"> Dining & Restaurants</label>
+                <label><input type="checkbox" name="groceries"> Groceries</label>
+                <label><input type="checkbox" name="gas_automotive"> Gas & Automotive</label>
+                <label><input type="checkbox" name="shopping"> Shopping</label>
+                <label><input type="checkbox" name="entertainment"> Entertainment</label>
+                <label><input type="checkbox" name="bills_utilities"> Bills & Utilities</label>
               </div>
-              
-            
-              <div class="form-group">
-                <label for="income-range">Approximate Annual Income</label>
-                <div class="slider-container">
-                  <center><span class="slider-value" id="income-value">$50k</span></center> <!-- Floats above thumb -->
-                    <input type="range" id="income-range" min="0" max="5" step="1" value="2" oninput="updateSlider('income-range', 'income-value')">
-                    
-                    <div class="slider-labels">
-                        <span>$0</span>
-                        <span>$100k+</span>
-                    </div>
-                </div>
             </div>
-            
+
             <div class="form-group">
-                <label for="credit-score">Estimated Credit Score</label>
-                <div class="slider-container">
-                    <center><span class="slider-value" id="credit-value">Good</span></center><!-- Floats above thumb -->
-                    <input type="range" id="credit-score" min="0" max="4" step="1" value="2" oninput="updateSlider('credit-score', 'credit-value')">
-                    <div class="slider-labels">
-                        <span>Poor</span>
-                        <span>Excellent</span>
-                    </div>
-                </div>
-            </div>
-            
-            
-              
-            
+              <label for="annual_income">Approximate Annual Income</label>
+              <div class="slider-container">
+                <center><span class="slider-value" id="income-value">$50k</span></center> <!-- Floats above thumb -->
+                  <input type="range" id="income-range" min="0" max="5" step="1" value="2" oninput="updateSlider('income-range', 'income-value')">
+                  
+                  <div class="slider-labels">
+                      <span>$0</span>
+                      <span>$100k+</span>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="form-group">
+              <label for="credit-score">Estimated Credit Score</label>
+              <div class="slider-container">
+                  <center><span class="slider-value" id="credit-value">Good</span></center><!-- Floats above thumb -->
+                  <input type="range" id="credit-score" min="0" max="4" step="1" value="2" oninput="updateSlider('credit-score', 'credit-value')">
+                  <div class="slider-labels">
+                      <span>Poor</span>
+                      <span>Excellent</span>
+                  </div>
+              </div>
+          </div>
+
             <div class="form-group">
               <label>Preferences</label>
-              <div class="toggle-group">
-                <label class="toggle">
-                  <input type="checkbox" id="full-balance">
-                  <span class="toggle-slider"></span>
-                </label>
-                <span>I pay my balance in full each month</span>
+              <div>
+                <label><input type="checkbox" name="pay_balance_in_full"> I pay my balance in full each month</label>
               </div>
-              
-              <div class="toggle-group">
-                <label class="toggle">
-                  <input type="checkbox" id="no-foreign-fees">
-                  <span class="toggle-slider"></span>
-                </label>
-                <span>I want a card with no foreign transaction fees</span>
+              <div>
+                <label><input type="checkbox" name="no_foreign_fees"> I want a card with no foreign transaction fees</label>
               </div>
-              
-              <div class="toggle-group">
-                <label class="toggle">
-                  <input type="checkbox" id="prefer-cashback">
-                  <span class="toggle-slider"></span>
-                </label>
-                <span>I prefer cashback over travel rewards</span>
+              <div>
+                <label><input type="checkbox" name="prefer_cashback"> I prefer cashback over travel rewards</label>
               </div>
             </div>
-            
-            <div class="progress-container">
-                <label>Questionnaire Progress</label>
-                <div class="progress-bar">
-                  <div class="progress-fill" id="progress-fill"></div>
-                </div>
-            
-            </div>
-            <center><button type="submit" class="btn btn-accent" formaction="{{ url_for('main.results') }}">Show My Card Recommendations</button></center>
 
+            <div class="progress-container">
+              <label>Questionnaire Progress</label>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+              </div>
+            </div>
+
+            <center><button type="submit" class="btn btn-accent">Submit</button></center>
           </form>
         </div>
     
