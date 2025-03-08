@@ -21,9 +21,47 @@ def register():
             flash("Username or Email already exists!", "danger")
             return redirect(url_for('auth.register'))
 
+        # Spending categories (Checkbox values are 'on' if checked)
+        travel = 'travel' in request.form
+        dining = 'dining' in request.form
+        groceries = 'groceries' in request.form
+        gas_automotive = 'gas_automotive' in request.form
+        shopping = 'shopping' in request.form
+        entertainment = 'entertainment' in request.form
+        bills_utilities = 'bills_utilities' in request.form
+
+        # Financial Information (Convert input to integers)
+        try:
+            annual_income = int(request.form['annual_income'])
+            credit_score = int(request.form['credit_score'])
+        except ValueError:
+            print("❌ Error: Invalid number format for income or credit score")  # ✅ Debugging print
+            flash("Please enter valid numbers for income and credit score.", "danger")
+            return redirect(url_for('auth.register'))
+
+        # User Preferences (Checkbox values are 'on' if checked)
+        pay_balance_in_full = 'pay_balance_in_full' in request.form
+        no_foreign_fees = 'no_foreign_fees' in request.form
+        prefer_cashback = 'prefer_cashback' in request.form
+
         # Create new user
-        new_user = User(username=username, email=email)
-        new_user.set_password(password)  # Hash the password
+        new_user = User(
+            username=username,
+            email=email,
+            travel=travel,
+            dining=dining,
+            groceries=groceries,
+            gas_automotive=gas_automotive,
+            shopping=shopping,
+            entertainment=entertainment,
+            bills_utilities=bills_utilities,
+            annual_income=annual_income,
+            credit_score=credit_score,
+            pay_balance_in_full=pay_balance_in_full,
+            no_foreign_fees=no_foreign_fees,
+            prefer_cashback=prefer_cashback
+        )
+        new_user.set_password(password)  # Hash password
 
         # Save to database
         try:
