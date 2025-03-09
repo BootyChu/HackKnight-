@@ -98,7 +98,12 @@ def dashboard():
 
 @main.route('/congrats')
 def congrats():
-    return render_template('congrats.html')  # Ensure this template exists
+    return render_template('congrats.html')  
+
+@main.route('/about')
+def about():
+    return render_template('about_us.html')  
+
 
 @main.route('/submit_questionnaire', methods=['POST'])
 def submit_questionnaire():

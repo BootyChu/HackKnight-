@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link rel="stylesheet" href="app/static/css/styles.css">
+
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <!-- Logo -->
+      <a href="{{ url_for('main.home') }}" class="logo">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4Z" fill="#0076C0"/>
+          <path d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z" fill="white"/>
+        </svg>
+        Capital One Card Finder
+      </a>
+      
+  
+      <!-- Buttons (Sign In & Help Support) -->
+      <div class="accessibility-controls">
+        <button class="btn btn-secondary">Help & Support</button>
+        <a href="{{ url_for('auth.login') }}" class="btn">Log Out</a>
+      </div>
+    </div>
+  
+    <!-- Navigation Bar Below -->
+    <nav>
+      <ul id="nav-menu">
+        <li><a href="{{ url_for('main.home') }}">Home</a></li>
+        <li><a href="{{ url_for('main.results') }}">Results</a></li>
+        <li><a href="{{ url_for('main.comparison') }}">All Cards</a></li>
+        <li><a href="{{ url_for('main.education') }}">Education</a></li>
+        <li><a href="{{ url_for('main.accessibility') }}">Accessibility</a></li>
+        <li><a href="{{ url_for('main.feedback') }}">Feedback</a></li>
+        <li><a href="{{ url_for('main.about') }}">About Us</a></li>
+
+      </ul>
+    </nav>
+      
+      
+  </header>
+
+  <section class="team-section">
+    <div class="container">
+      <div class="team-heading">
+        <h2>Meet The Team</h2>
+        <p>Hackers for Queens College</p>
+      </div>
+      
+      <div class="team-grid">
+        <div class="team-member">
+            <div class="team-photo">
+                <img src="static/img/bode_chiu.jpeg" alt="Bode Chiu">
+
+            </div>
+          <div class="team-info">
+            <h3>Bode Chui</h3>
+            <div class="team-title">Backend</div>
+            <p>Senior at Hunter College studying Computer Science and minoring in Chemistry.</p>
+          </div>
+        </div>
+        
+        <div class="team-member">
+            <div class="team-photo">
+                <img src="static/img/makiya_laurenza.jpeg" alt="Makiya">
+            </div>
+          <div class="team-info">
+            <h3>Makiya Laurenza</h3>
+            <div class="team-title">FrontEnd</div>
+            <p>Junior at Hunter College studying Computer Science.</p>
+          </div>
+        </div>
+        
+        <div class="team-member">
+            <div class="team-photo">
+                <img src="static/img/sarah_khaldi.jpeg" alt="sarah_khaldi">
+            </div>
+          <div class="team-info">
+            <h3>Sarah Khaldi</h3>
+            <div class="team-title">Backend</div>
+            <p>Senior at Hunter College studying Computer Science.</p>
+          </div>
+        </div>
+        
+        <div class="team-member">
+            <div class="team-photo">
+                <img src="static/img/tc.jpeg" alt="tc">
+            </div>
+          <div class="team-info">
+            <h3>Tamanna Chowdhury</h3>
+            <div class="team-title">Frontend</div>
+            <p>Senior at Hunter College studying Computer Science.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script src="{{ url_for('static', filename='js/accessibility.js') }}"></script> 
+
+</body>
+</html>
