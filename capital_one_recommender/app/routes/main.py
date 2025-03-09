@@ -1,63 +1,21 @@
-# from flask import Flask, render_template, Blueprint
-# from app.utils.models import db
-# from app.utils.database import init_db
-# from app.routes.auth import auth
-
-# app = Flask(__name__, static_folder="../static", template_folder="../templates")
-
-# init_db(app) 
-
-# # Register Blueprints
-# app.register_blueprint(auth, url_prefix="/")  # Register 'auth' Blueprint
-
-
-# @app.route('/')
-# def home():
-#     return render_template('index.html')
-
-# @app.route('/questionnaire')
-# def questionnaire():
-#     return render_template('questionnaire.html')
-
-# @app.route('/results')
-# def results():
-#     return render_template('results.html')
-
-# @app.route('/comparison')
-# def comparison():
-#     return render_template('comparison.html')
-
-# @app.route('/education')
-# def education():
-#     return render_template('education.html')
-
-# @app.route('/accessibility')
-# def accessibility():
-#     return render_template('accessibility.html')
-
-# @app.route('/features')
-# def features():
-#     return render_template('features.html')
-
-# @app.route('/feedback')
-# def feedback():
-#     return render_template('feedback.html')
-
-# @app.route('/dashboard')
-# def dashboard():
-#     return render_template('dashboard.html')
-
-# if __name__ == "__main__":
-#     app.run(debug=True)
-
+import os
 from flask import Blueprint, render_template, request, render_template, redirect, url_for, flash, jsonify
 from app.services.recommender import recommend_card
 from app.utils.models import db, QuestionnaireResponse
 from app.utils.database import init_db
 from app.routes.auth import auth
+from groq import Groq
+import datetime
+from dotenv import load_dotenv
+import json
+import re
 
 # ✅ Create the Blueprint
 main = Blueprint('main', __name__)
+
+load_dotenv()
+# Initialize Groq API Client
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 # ✅ Define Routes
 @main.route('/')
@@ -194,3 +152,69 @@ def debug_questionnaire_responses():
     ]
 
     return jsonify(response_list)  # Returns all stored questionnaire responses as JSON
+
+
+@main.route("/help_support", methods=["GET", "POST"])
+def help_support():
+    if request.method == "POST":
+        # Fetch the latest user questionnaire response
+        user_data = QuestionnaireResponse.query.order_by(QuestionnaireResponse.date_created.desc()).first()
+        
+        if not user_data:
+            return jsonify({"error": "No user data found"}), 400
+
+        # Format user preferences for AI prompt
+        user_info = f"""
+        Travel: {user_data.travel}, Dining: {user_data.dining}, Groceries: {user_data.groceries},
+        Gas & Automotive: {user_data.gas_automotive}, Shopping: {user_data.shopping},
+        Entertainment: {user_data.entertainment}, Bills & Utilities: {user_data.bills_utilities},
+        Annual Income: {user_data.annual_income}, Credit Score: {user_data.credit_score},
+        Pay Balance in Full: {user_data.pay_balance_in_full}, No Foreign Fees: {user_data.no_foreign_fees},
+        Prefer Cashback: {user_data.prefer_cashback}
+        """
+
+        # AI Chatbot Query (Forcing JSON Output)
+        completion = client.chat.completions.create(
+            model="llama3-70b-8192",
+            messages=[
+                {
+                    "role": "user",
+                    "content": f"Help me determine the top 3 capital one credit cards based on this user profile: {user_info}. "
+                               f"ONLY return a valid JSON array with exactly 3 items using this format:\n"
+                               f'[{{"card_name": "string", "credit_level": "string", "reward": "string", '
+                               f'"annual_fee": "string", "purchase_rate": "string", "transfer_info": "string"}}]. '
+                               f"ONLY return a JSON array with exactly 3 items. DO NOT include any text before or after the JSON array."
+                               #f"Do not return the title of the card with 'Capital One' in the header, you can still say cash rewards credit card etc"
+                }
+            ],
+            temperature=1,
+            max_tokens=1024,
+            top_p=1,
+            stream=False,
+            stop=None,
+        )
+
+        # **Debugging: Print AI Raw Response**
+        raw_response = completion.choices[0].message.content
+        print("🔹 Raw AI Response:", raw_response)
+
+        # **Extract JSON Block from AI Response**
+        match = re.search(r"\[.*\]", raw_response, re.DOTALL)  # Extract anything between square brackets
+        if not match:
+            print("❌ No JSON Array Found in AI Response!")
+            return jsonify({"error": "AI response did not contain valid JSON"}), 500
+
+        json_string = match.group(0)  # Get the matched JSON array
+
+        # **Try to Parse JSON Response**
+        try:
+            recommended_cards = json.loads(json_string)
+        except json.JSONDecodeError:
+            print("❌ JSON Decoding Error: AI Response is not valid JSON!")
+            return jsonify({"error": "AI response could not be processed"}), 500
+
+        print("✅ Parsed Cards:", recommended_cards)
+
+        return jsonify({"cards": recommended_cards})
+
+    return render_template("help_support.html")

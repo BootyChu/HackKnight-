@@ -25,7 +25,7 @@
   
       <!-- Buttons (Sign In & Help Support) -->
       <div class="accessibility-controls">
-        <button class="btn btn-secondary">Help & Support</button>
+        <a href="{{ url_for('main.help_support') }}" class="btn btn-secondary">Help & Support</a>
         <a href="{{ url_for('auth.login') }}" class="btn">Log In/Sign Up</a>
       </div>
     </div>
