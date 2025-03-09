@@ -96,6 +96,10 @@ def feedback():
 def dashboard():
     return render_template('dashboard.html')
 
+@main.route('/congrats')
+def congrats():
+    return render_template('congrats.html')  # Ensure this template exists
+
 @main.route('/submit_questionnaire', methods=['POST'])
 def submit_questionnaire():
     try:
