@@ -51,6 +51,7 @@
 #     app.run(debug=True)
 
 from flask import Blueprint, render_template, request, render_template, redirect, url_for, flash, jsonify
+from app.services.recommender import recommend_card
 from app.utils.models import db, QuestionnaireResponse
 from app.utils.database import init_db
 from app.routes.auth import auth
@@ -70,7 +71,11 @@ def questionnaire():
 
 @main.route('/results')
 def results():
-    return render_template('results.html')
+    recommendations = recommend_card()  # Ensure this returns a LIST of DICTIONARIES
+    if not isinstance(recommendations, list):  # Fix case where a single string is returned
+        recommendations = []
+    return render_template('results.html', recommendations=recommendations)
+
 
 @main.route('/comparison')
 def comparison():
@@ -102,7 +107,7 @@ def congrats():
 
 @main.route('/about')
 def about():
-    return render_template('about_us.html')  
+    return render_template('about_us.html')
 
 
 @main.route('/submit_questionnaire', methods=['POST'])

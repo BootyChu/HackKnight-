@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from app.utils.models import db
 from app.routes.auth import auth
 from app.routes.main import main
+from app.routes.api import api  # ✅ Import the API blueprint
 
 def create_app():
     app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -22,5 +23,6 @@ def create_app():
     # ✅ Register Blueprints
     app.register_blueprint(auth, url_prefix="/")
     app.register_blueprint(main, url_prefix="/")
+    app.register_blueprint(api, url_prefix="/")  # ✅ Register API Blueprint
 
     return app

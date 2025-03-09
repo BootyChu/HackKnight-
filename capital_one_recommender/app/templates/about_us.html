@@ -47,51 +47,51 @@
     <div class="container">
       <div class="team-heading">
         <h2>Meet The Team</h2>
-        <p>Hackers for Queens College</p>
+        <p>Hack Night</p>
       </div>
       
       <div class="team-grid">
         <div class="team-member">
             <div class="team-photo">
-                <img src="static/img/bode_chiu.jpeg" alt="Bode Chiu">
-
+              <img src="{{ url_for('static', filename='img/bode_chiu.jpeg') }}" alt="Bode Chiu">
             </div>
           <div class="team-info">
-            <h3>Bode Chui</h3>
-            <div class="team-title">Backend</div>
+            <h3>Bode Chiu</h3>
+            <div class="team-title">Backend: Database</div>
             <p>Senior at Hunter College studying Computer Science and minoring in Chemistry.</p>
           </div>
         </div>
         
         <div class="team-member">
             <div class="team-photo">
-                <img src="static/img/makiya_laurenza.jpeg" alt="Makiya">
+              <img src="{{ url_for('static', filename='img/makiya_laurenza.jpeg') }}" alt="Makiya">
             </div>
           <div class="team-info">
             <h3>Makiya Laurenza</h3>
-            <div class="team-title">Frontend</div>
+            <div class="team-title">Frontend: Research</div>
             <p>Junior at Hunter College studying Computer Science.</p>
           </div>
         </div>
         
         <div class="team-member">
             <div class="team-photo">
-                <img src="static/img/sarah_khaldi.jpeg" alt="sarah_khaldi">
+                <img src="{{ url_for('static', filename='img/sarah_khaldi.jpeg') }}" alt="sarah_khaldi">
             </div>
           <div class="team-info">
             <h3>Sarah Khaldi</h3>
-            <div class="team-title">Backend</div>
+            <div class="team-title">Backend: Machine Learning & AI</div>
             <p>Senior at Hunter College studying Computer Science.</p>
           </div>
         </div>
         
         <div class="team-member">
             <div class="team-photo">
-                <img src="static/img/tc.jpeg" alt="tc">
+          
+                <img src="{{ url_for('static', filename='img/tc.jpeg') }}" alt="tc">
             </div>
           <div class="team-info">
             <h3>Tamanna Chowdhury</h3>
-            <div class="team-title">Frontend</div>
+            <div class="team-title">Frontend: UI/UX Design</div>
             <p>Senior at Hunter College studying Computer Science.</p>
           </div>
         </div>

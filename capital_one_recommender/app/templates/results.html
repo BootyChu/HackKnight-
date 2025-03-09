@@ -58,119 +58,26 @@
             </ul>
             <p class="text-sm">Continue filling out the form for your personalized recommendations.</p>
           </div>
-      <h2 class="text-center">Your Recommended Cards</h2>
-      <p class="text-center">Based on your preferences, we've found these Capital One cards for you</p>
-      
-      <div class="card-grid">
-        <div class="card-recommendation">
-          <div class="card-image">
-            Capital One Quicksilver
+
+        <h2 class="text-center">Your Recommended Cards</h2>
+        <p class="text-center">Based on your preferences, we've found these Capital One cards for you</p>
+
+        <div class="card-grid">
+          {% for card in recommendations %}
+          <div class="card-recommendation">
+              <div class="card-content">
+                  <h3 class="card-title">{{ card["Card Name"] }}</h3>
+                  <p><strong>Annual Fee:</strong> {{ card["Annual Fee"] }}</p>
+                  <p><strong>Purchase Rate:</strong> {{ card["Purchase Rate"] }}</p>
+                  <p><strong>Reward:</strong> {{ card["Reward"] }}</p>
+                  <a href="#" class="btn">Learn More</a>
+                  <a href="#" class="btn btn-accent">Apply Now</a>
+              </div>
           </div>
-          <div class="card-content">
-            <span class="card-tag">Best Overall Match</span>
-            <h3 class="card-title">Quicksilver Cash Rewards</h3>
-            <div class="card-features">
-              <div class="feature-item">
-                <span class="feature-icon-small">✓</span>
-                <span>Unlimited 1.5% cash back on every purchase</span>
-              </div>
-              <div class="feature-item">
-                <span class="feature-icon-small">✓</span>
-                <span>$0 annual fee</span>
-              </div>
-              <div class="feature-item">
-                <span class="feature-icon-small">✓</span>
-                <span>No foreign transaction fees</span>
-              </div>
-            </div>
-            
-            <div class="reason-matched">
-              <h4>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="#0076C0"/>
-                </svg>
-                Why this matches you
-              </h4>
-              <p>Based on your spending habits across multiple categories and preference for cashback rewards.</p>
-            </div>
-            
-            <a href="#" class="btn">Learn More</a>
-            <a href="#" class="btn btn-accent">Apply Now</a>
-          </div>
+          {% else %}
+          <p>No recommendations available.</p>
+          {% endfor %}          
         </div>
         
-        <div class="card-recommendation">
-          <div class="card-image">
-            Capital One SavorOne
-          </div>
-          <div class="card-content">
-            <span class="card-tag">Great for Dining</span>
-            <h3 class="card-title">SavorOne Cash Rewards</h3>
-            <div class="card-features">
-              <div class="feature-item">
-                <span class="feature-icon-small">✓</span>
-                <span>3% cash back on dining, entertainment</span>
-              </div>
-              <div class="feature-item">
-                <span class="feature-icon-small">✓</span>
-                <span>3% cash back at grocery stores</span>
-              </div>
-              <div class="feature-item">
-                <span class="feature-icon-small">✓</span>
-                <span>1% cash back on all other purchases</span>
-              </div>
-            </div>
-            
-            <div class="reason-matched">
-              <h4>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="#0076C0"/>
-                </svg>
-                Why this matches you
-              </h4>
-              <p>You indicated dining and groceries as top spending categories, making this card's rewards structure ideal.</p>
-            </div>
-            
-            <a href="#" class="btn">Learn More</a>
-            <a href="#" class="btn btn-accent">Apply Now</a>
-          </div>
-        </div>
-        
-        <div class="card-recommendation">
-          <div class="card-image">
-            Capital One Venture
-          </div>
-          <div class="card-content">
-            <span class="card-tag">Best for Travel</span>
-            <h3 class="card-title">Venture Rewards</h3>
-            <div class="card-features">
-              <div class="feature-item">
-                <span class="feature-icon-small">✓</span>
-                <span>2x miles on every purchase</span>
-              </div>
-              <div class="feature-item">
-                <span class="feature-icon-small">✓</span>
-                <span>No foreign transaction fees</span>
-              </div>
-              <div class="feature-item">
-                <span class="feature-icon-small">✓</span>
-                <span>1% cash back on all other purchases</span>
-              </div>
-            </div>
-            
-            <div class="reason-matched">
-              <h4>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="#0076C0"/>
-                </svg>
-                Why this matches you
-              </h4>
-              <p>You indicated dining and groceries as top spending categories, making this card's rewards structure ideal.</p>
-            </div>
-            
-            <a href="#" class="btn">Learn More</a>
-            <a href="#" class="btn btn-accent">Apply Now</a>
-          </div>
-        </div>
 </body>
 </html>
