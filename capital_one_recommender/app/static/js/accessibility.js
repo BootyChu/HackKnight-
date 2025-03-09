@@ -216,7 +216,7 @@ function createCardHTML(card) {
     return `
         <div class="card-recommendation">
             <div class="card-content">
-                <span class="card-tag">${card.tag}</span>
+                <center><span class="card-tag">${card.tag}</span></center>
                 <h3 class="card-title">${card.name}</h3>
                 <div class="card-features">
                     ${card.features.map(feature => `

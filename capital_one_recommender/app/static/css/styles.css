@@ -327,6 +327,7 @@
     gap: 20px;
     justify-content: center;
     align-items: stretch; /* Ensures cards stretch to same height */
+    margin-top: 40px;
 }
 
 /* Ensure All Cards Have Equal Height */
