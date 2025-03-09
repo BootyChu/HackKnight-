@@ -1076,5 +1076,46 @@ footer {
   accent-color: var(--primary);
   margin-right: 5px;
 }
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
 
+/* Container */
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
 
+/* Glossary Section */
+.glossary-container {
+  margin-top: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Glossary Boxes */
+.glossary-box {
+  background: #ffffff;
+  padding: 15px;
+  border-left: 5px solid #0076C0;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.glossary-box h2 {
+  color: #0076C0;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.glossary-box p {
+  font-size: 16px;
+  color: #333;
+}

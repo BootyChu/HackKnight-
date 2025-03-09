@@ -4,14 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-  <link rel="stylesheet" href="app/static/css/styles.css">
+
+  <title>Financial Literacy Terms</title>
+</head>
+<body>
 
  <!-- Header -->
  <header>
   <div class="container header-container">
     <!-- Logo -->
     <a href="{{ url_for('main.home') }}" class="logo">
-
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4Z" fill="#0076C0"/>
         <path d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z" fill="white"/>
@@ -29,19 +31,62 @@
 
   <!-- Navigation Bar Below -->
   <nav>
-    <ul id="nav-menu">
-      <li><a href="{{ url_for('main.home') }}">Home</a></li>
-      <li><a href="{{ url_for('main.results') }}">Results</a></li>
-      <li><a href="{{ url_for('main.comparison') }}">All Cards</a></li>
-      <li><a href="{{ url_for('main.education') }}">Education</a></li>
-      <li><a href="{{ url_for('main.accessibility') }}">Accessibility</a></li>
-      <li><a href="{{ url_for('main.feedback') }}">Feedback</a></li>
-
-    </ul>
-  </nav>
+      <ul id="nav-menu">
+        <li><a href="{{ url_for('main.home') }}">Home</a></li>
+        <li><a href="{{ url_for('main.results') }}">Results</a></li>
+        <li><a href="{{ url_for('main.comparison') }}">All Cards</a></li>
+        <li><a href="{{ url_for('main.education') }}">Education</a></li>
+        <li><a href="{{ url_for('main.accessibility') }}">Accessibility</a></li>
+      </ul>
+    </nav>
     
     
 </header>
+
+<!-- Financial Glossary Section -->
+<main>
+  <div class="container glossary-container">
+    <h1>Financial Literacy Terms</h1>
+    
+    <div class="glossary-box">
+      <h2>APR (Annual Percentage Rate)</h2>
+      <p>The cost of borrowing money on a credit card, shown as a yearly percentage. If you don’t pay your balance in full each month, APR determines how much interest you owe.</p>
+    </div>
+
+    <div class="glossary-box">
+      <h2>Credit Utilization</h2>
+      <p>The percentage of your credit limit that you’re using. Keeping it below 30% helps maintain a good credit score.</p>
+    </div>
+
+    <div class="glossary-box">
+      <h2>Rewards Rates</h2>
+      <p>The percentage of cashback, points, or miles you earn on purchases. Example: A 2% cashback card gives you $2 for every $100 spent.</p>
+    </div>
+
+    <div class="glossary-box">
+      <h2>Hidden Fees</h2>
+      <p>Extra charges that aren’t always obvious, like annual fees, late payment fees, and foreign transaction fees.</p>
+    </div>
+
+    <div class="glossary-box">
+      <h2>Late Fees</h2>
+      <p>A penalty charged if you miss your payment due date. It can also hurt your credit score.</p>
+    </div>
+
+    <div class="glossary-box">
+      <h2>Interest Charges</h2>
+      <p>Extra money you pay if you don’t pay your full credit card balance on time. It’s based on your card’s APR.</p>
+    </div>
+
+    <div class="glossary-box">
+      <h2>Credit Score</h2>
+      <p>A number (300-850) that shows how responsible you are with credit. A high score makes it easier to get loans and lower interest rates.</p>
+    </div>
+
+    
+
+  </div>
+</main>
 
 </body>
 </html>
