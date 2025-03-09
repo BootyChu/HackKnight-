@@ -123,8 +123,8 @@
             <div class="form-group">
               <label for="annual_income">Approximate Annual Income</label>
               <div class="slider-container">
-                <center><span class="slider-value" id="income-value">$50k</span></center> <!-- Floats above thumb -->
-                  <input type="range" id="income-range" min="0" max="5" step="1" value="2" oninput="updateSlider('income-range', 'income-value')">
+                <center><span class="slider-value" id="income-value">$50,000</span></center> <!-- Floats above thumb -->
+                  <input type="range" name="annual_income" id="income-range" min="0" max="100000" step="5000" value="50000" oninput="updateSlider('income-range', 'income-value')">
                   
                   <div class="slider-labels">
                       <span>$0</span>
@@ -136,11 +136,11 @@
           <div class="form-group">
               <label for="credit-score">Estimated Credit Score</label>
               <div class="slider-container">
-                  <center><span class="slider-value" id="credit-value">Good</span></center><!-- Floats above thumb -->
-                  <input type="range" id="credit-score" min="0" max="4" step="1" value="2" oninput="updateSlider('credit-score', 'credit-value')">
+                  <center><span class="slider-value" id="credit-value">575</span></center><!-- Floats above thumb -->
+                  <input type="range" name="credit_score" id="credit-score" min="300" max="850" step="10" value="575" oninput="updateSlider('credit-score', 'credit-value')">
                   <div class="slider-labels">
-                      <span>Poor</span>
-                      <span>Excellent</span>
+                      <span>300</span>
+                      <span>850</span>
                   </div>
               </div>
           </div>
@@ -149,7 +149,7 @@
             <label>Preferences</label>
             <div class="toggle-group">
               <label class="toggle">
-                <input type="checkbox" id="full-balance">
+                <input type="checkbox" id="full-balance" name="pay_balance_in_full">
                 <span class="toggle-slider"></span>
               </label>
               <span>I pay my balance in full each month</span>
@@ -157,7 +157,7 @@
             
             <div class="toggle-group">
               <label class="toggle">
-                <input type="checkbox" id="no-foreign-fees">
+                <input type="checkbox" id="no-foreign-fees" name="no_foreign_fees">
                 <span class="toggle-slider"></span>
               </label>
               <span>I want a card with no foreign transaction fees</span>
@@ -165,7 +165,7 @@
             
             <div class="toggle-group">
               <label class="toggle">
-                <input type="checkbox" id="prefer-cashback">
+                <input type="checkbox" id="prefer-cashback" name="prefer_cashback">
                 <span class="toggle-slider"></span>
               </label>
               <span>I prefer cashback over travel rewards</span>

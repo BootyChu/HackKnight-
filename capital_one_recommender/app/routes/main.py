@@ -140,9 +140,10 @@ def submit_questionnaire():
             return redirect(url_for('main.questionnaire'))
 
         # Extract user preferences
-        pay_balance_in_full = 'pay_balance_in_full' in request.form
-        no_foreign_fees = 'no_foreign_fees' in request.form
-        prefer_cashback = 'prefer_cashback' in request.form
+        # Extract boolean values correctly
+        pay_balance_in_full = request.form.get('pay_balance_in_full') is not None
+        no_foreign_fees = request.form.get('no_foreign_fees') is not None
+        prefer_cashback = request.form.get('prefer_cashback') is not None
 
         # ✅ Debugging: Print values to confirm they are captured correctly
         print(f"Travel: {travel}, Dining: {dining}, Groceries: {groceries}")

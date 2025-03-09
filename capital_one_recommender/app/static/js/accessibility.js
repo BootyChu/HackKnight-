@@ -2,15 +2,12 @@ function updateSlider(sliderId, displayId) {
     const slider = document.getElementById(sliderId);
     const display = document.getElementById(displayId);
 
-    // Define label mappings for each slider
-    const incomeLabels = ["Below $30k", "$30k-$50k", "$50k-$70k", "$70k-$90k", "$90k-$100k", "$100k+"];
-    const creditLabels = ["Poor", "Fair", "Good", "Very Good", "Excellent"];
 
     // Choose the correct label based on slider ID
     if (sliderId === "income-range") {
-        display.textContent = incomeLabels[slider.value];
+        display.textContent = `${slider.value}`;
     } else if (sliderId === "credit-score") {
-        display.textContent = creditLabels[slider.value];
+        display.textContent = `${slider.value}`;
     }
 }
 
