@@ -171,8 +171,85 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+ // Example user preferences (this could be fetched from a backend)
+ const userPreferences = {
+    categories: ["dining", "travel"],  // User-selected categories
+    prefersCashback: true,             // User prefers cashback
+    noForeignFees: true                // User wants no foreign fees
+};
 
-//  // Automatically redirect after 0.7 seconds
-//  setTimeout(() => {
-//     window.location.href = "{{ url_for('main.results') }}";
-// }, 700);
+// List of available cards
+const availableCards = [
+    {
+        name: "Quicksilver Cash Rewards",
+        tag: "Best Overall Match",
+        features: [
+            "Unlimited 1.5% cash back on every purchase",
+            "$0 annual fee",
+            "No foreign transaction fees"
+        ],
+        matches: ["cashback", "noForeignFees"]
+    },
+    {
+        name: "SavorOne Cash Rewards",
+        tag: "Great for Dining",
+        features: [
+            "3% cash back on dining, entertainment",
+            "3% cash back at grocery stores",
+            "1% cash back on all other purchases"
+        ],
+        matches: ["dining", "cashback"]
+    },
+    {
+        name: "Venture Rewards",
+        tag: "Best for Travel",
+        features: [
+            "2x miles on every purchase",
+            "No foreign transaction fees"
+        ],
+        matches: ["travel", "noForeignFees"]
+    }
+];
+
+// Function to generate HTML for a card
+function createCardHTML(card) {
+    return `
+        <div class="card-recommendation">
+            <div class="card-content">
+                <span class="card-tag">${card.tag}</span>
+                <h3 class="card-title">${card.name}</h3>
+                <div class="card-features">
+                    ${card.features.map(feature => `
+                        <div class="feature-item">
+                            <span class="feature-icon-small">✓</span>
+                            <span>${feature}</span>
+                        </div>`).join("")}
+                </div>
+                <div class="reason-matched">
+                    <h4>Why this matches you</h4>
+                    <p>Based on your preferences (${card.matches.join(", ")})</p>
+                </div>
+                <a href="#" class="btn">Learn More</a>
+                <a href="#" class="btn btn-accent">Apply Now</a>
+            </div>
+        </div>`;
+}
+
+// Function to display matching cards
+function displayRecommendedCards() {
+    const cardGrid = document.getElementById("card-grid");
+    cardGrid.innerHTML = "";
+
+    // Filter cards based on user preferences
+    const matchingCards = availableCards.filter(card => 
+        card.matches.some(match => userPreferences.categories.includes(match) || userPreferences[match])
+    );
+
+    // Add cards to HTML
+    matchingCards.forEach(card => {
+        cardGrid.innerHTML += createCardHTML(card);
+    });
+}
+
+// Load recommendations when the page loads
+document.addEventListener("DOMContentLoaded", displayRecommendedCards);
